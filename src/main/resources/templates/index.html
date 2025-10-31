@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sum Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 80px;
+        }
+        .card {
+            background: white;
+            padding: 24px 32px;
+            border-radius: 12px;
+            box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        input[type="number"] {
+            width: 140px;
+            padding: 8px;
+            margin: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            background-color: #0069d9;
+            color: white;
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        button:hover { opacity: 0.92; }
+        .result {
+            margin-top: 18px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #08306b;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Sum Calculator</h2>
+        <form action="/calculate" method="post">
+            <input type="number" name="num1" placeholder="Enter first number" required
+                   th:value="${num1}">
+            <input type="number" name="num2" placeholder="Enter second number" required
+                   th:value="${num2}">
+            <div style="margin-top:10px">
+                <button type="submit">Calculate</button>
+            </div>
+        </form>
+
+        <div class="result" th:if="${result != null}">
+            The sum of <span th:text="${num1}"></span> and <span th:text="${num2}"></span> is
+            <span th:text="${result}" style="color:green;"></span>
+        </div>
+    </div>
+</body>
+</html>
